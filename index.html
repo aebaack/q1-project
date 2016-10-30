@@ -31,7 +31,7 @@
         <a href="#" data-activates="nav-mobile" class="button-collapse white-text"><i class="material-icons">menu</i></a>
         <!-- Desktop navigation -->
         <ul class="right hide-on-med-and-down">
-          <li><a href="#" class="white-text"><i class="material-icons left">search</i>search</a></li>
+          <li><a href="#searchModal" class="modal-trigger white-text"><i class="material-icons left">search</i>search</a></li>
           <li><a href="#about" class="white-text"><i class="material-icons left">info</i>about</a></li>
           <li><a href="#" class="btn waves-effect waves-light rounded-corners no-uppercase red">random poem</a></li>
         </ul>
@@ -155,5 +155,25 @@
       </div> <!-- end container -->
     </div> <!-- end copyright -->
   </footer>
+  <div id="searchModal" class="modal">
+    <form action="" method="post">
+      <div class="modal-content grey lighten-2">
+        <h4>Search for Poems</h4>
+        <div class="input-field">
+          <i class="material-icons prefix">account_circle</i>
+          <input id="poet" type="text" class="validate">
+          <label for="poet">Poet</label>
+        </div>
+        <div class="input-field">
+          <i class="material-icons prefix">account_circle</i>
+          <input id="title" type="text" class="validate">
+          <label for="title">Title</label>
+        </div>
+      </div>
+      <div class="modal-footer grey lighten-2">
+        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Search</a>
+      </div>
+    </form>
+  </div>
 </body>
 </html>
