@@ -12,3 +12,20 @@ body {
   -moz-border-radius: 20px;
   border-radius: 20px;
 }
+
+/* Keep the height of the emotion cards on the front page the same */
+.emotion-card {
+  height: 200px;
+}
+
+@media (max-width: 690px) {
+  .emotion-card {
+    height: 250px;
+  }
+}
+
+@media (max-width: 600px) {
+  .emotion-card {
+    height: 150px;
+  }
+}
