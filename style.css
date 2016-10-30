@@ -8,9 +8,9 @@ body {
 }
 
 .rounded-corners {
-  -webkit-border-radius: 20px;
-  -moz-border-radius: 20px;
-  border-radius: 20px;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  border-radius: 50px;
 }
 
 /* Keep the height of the emotion cards on the front page the same */
