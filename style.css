@@ -13,6 +13,14 @@ body {
   border-radius: 50px;
 }
 
+.bottom-padding {
+  padding-bottom: 40px;
+}
+
+#no-top-margin {
+  margin-top: 0;
+}
+
 /* Keep the height of the emotion cards on the front page the same */
 .emotion-card {
   height: 200px;
