@@ -26,10 +26,6 @@ body {
   padding-bottom: 0;
 }
 
-#second-gradient {
-  background: linear-gradient(to left, #4CA1AF , #C4E0E5);
-}
-
 /* Keep the height of the emotion cards on the front page the same */
 .emotion-card {
   height: 200px;
