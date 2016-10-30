@@ -18,10 +18,31 @@
   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
   crossorigin="anonymous" defer></script>
   <!-- Import Materialize JavaScript -->
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js" defer></script>
+  <!-- Initialize Materialize Components -->
+  <script type="text/javascript" src="init.js" defer></script>
   <script type="text/javascript" src="script.js" defer></script>
 </head>
 <body>
-
+  <header>
+    <nav class="transparent z-depth-0">
+      <div class="nav-wrapper container">
+        <a href="#" class="brand-logo black-text">Logo</a>
+        <a href="#" data-activates="nav-mobile" class="button-collapse black-text"><i class="material-icons">menu</i></a>
+        <!-- Desktop navigation -->
+        <ul class="right hide-on-med-and-down">
+          <li><a href="#" class="black-text"><i class="material-icons left">search</i>search</a></li>
+          <li><a href="#" class="black-text"><i class="material-icons left">info</i>about</a></li>
+          <li><a href="#" class="btn waves-effect waves-light no-uppercase red">random poem</a></li>
+        </ul>
+        <!-- Hamburger menu (mobile) navigation -->
+        <ul class="side-nav" id="nav-mobile">
+          <li><a href="#">Search</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Random</a></li>
+        </ul>
+      </div> <!-- end container -->
+    </nav> <!-- end navigation -->
+  </header>
 </body>
 </html>

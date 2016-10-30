@@ -1,0 +1,4 @@
+/* No uppercase styling for buttons */
+.no-uppercase {
+  text-transform: none;
+}
