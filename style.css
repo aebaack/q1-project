@@ -26,6 +26,11 @@ body {
 
 @media (max-width: 600px) {
   .emotion-card {
-    height: 150px;
+    height: 175px;
   }
+}
+
+#no-row-bottom-spacing {
+  margin-bottom: 0px;
+  padding-bottom: 0px;
 }
