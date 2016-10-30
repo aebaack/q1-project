@@ -21,6 +21,15 @@ body {
   margin-top: 0;
 }
 
+#no-row-bottom-spacing {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+#second-gradient {
+  background: linear-gradient(to left, #4CA1AF , #C4E0E5);
+}
+
 /* Keep the height of the emotion cards on the front page the same */
 .emotion-card {
   height: 200px;
@@ -36,9 +45,4 @@ body {
   .emotion-card {
     height: 175px;
   }
-}
-
-#no-row-bottom-spacing {
-  margin-bottom: 0px;
-  padding-bottom: 0px;
 }
