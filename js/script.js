@@ -12,6 +12,9 @@ $("#searchPoems").on("click", function() {
     $(ul).attr("class", "collapsible");
     poem.done(function(data) {
       for (var i = 0; i < data.length; i++) {
+        if (data[i].lines.length > 500) {
+          continue;
+        }
         var li = $("<li>");
         var divHeader = $("<div>"), divBody = $("<div>");
         divHeader.attr("class", "collapsible-header").html(data[i].title + '<a class="waves-effect waves-teal btn-flat poemSelector" id="' + data[i].title + '">Select</a>');
@@ -36,5 +39,10 @@ $("#searchPoems").on("click", function() {
 
 function selectPoem(event) {
   var title = $(event.target).attr("id");
-  var lines = $(event.target.parentElement.nextSibling).html();
+  // var lines = $(event.target.parentElement.nextSibling).html();
+  var poemData = $.getJSON("http://poetdb.herokuapp.com/title/" + title +":abs");
+  poemData.done(function(data) {
+    sessionStorage.setItem("poem", JSON.stringify(data));
+    document.location.href = "color.html";
+  });
 }
