@@ -1,5 +1,8 @@
 $(document).ready(function (){
   $(".button-collapse").sideNav();
-  $(".modal-trigger").leanModal();
   $("select").material_select();
+  $(".search").leanModal();
+  $(".poems").leanModal({
+    dismissible: false
+  });
 });
