@@ -22,7 +22,7 @@ $(document).ready(function() {
   var beginBtn = $("#beginBtn");
 
   poemStanza.hide(); // Hidden so that it can fade in later
-  
+
   beginBtn.on("click", function() {
     title.hide();
     poet.hide();
