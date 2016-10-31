@@ -193,8 +193,8 @@
 
   <div id="poemModal" class="modal modal-fixed-footer">
     <div class="modal-content center grey lighten-2">
-      <h3>Loading Poems</h3>
-      <br><br>
+      <h3 id="loadingPoems">Loading Poems<br></h3>
+      <br>
       <!-- loading circle -->
       <div class="preloader-wrapper active">
         <div class="spinner-layer spinner-red-only">
@@ -208,6 +208,8 @@
         </div>
       </div>
       <!-- end loading circle -->
+      <ul class="collapsible hide" id="poemList" data-collapsible="accordion">
+      </ul>
     </div> <!-- end modal content -->
     <div class="modal-footer">
       <a href="#!" class="modal-action modal-close waves-effect waves-light btn-flat">Select</a>

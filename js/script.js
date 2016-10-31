@@ -7,5 +7,29 @@ $("#searchPoems").on("click", function() {
   var length = poemForm["length"].value;
   if (poet.length === 0 && title.length === 0 && length === "any") {
     Materialize.toast('Enter more data!', 4000, 'red lighten-2');
+  } else {
+    var poem = $.getJSON("http://poetdb.herokuapp.com/author/"+poet);
+    var ul = $("#poemList");
+    $(ul).attr("class", "collapsible");
+    poem.done(function(data) {
+      for (var i = 0; i < data.length; i++) {
+        var li = $("<li>");
+        var divHeader = $("<div>"), divBody = $("<div>");
+        divHeader.attr("class", "collapsible-header").text(data[i].title);
+        divBody.attr("class", "collapsible-body white");
+        var poemLines = "";
+        for (var j = 0; j < data[i].lines.length; j++) {
+          poemLines += data[i].lines[j] + "<br>";
+        }
+        $(divBody).html(poemLines);
+        li.append(divHeader).append(divBody);
+        ul.append(li);
+      }
+      $(".preloader-wrapper").attr("class", "hide");
+      $("#loadingPoems").text("Select a Poem");
+    });
+    poem.fail(function(err) {
+      console.log(err);
+    });
   }
 });
