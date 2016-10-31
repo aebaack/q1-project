@@ -14,9 +14,11 @@ canvas {
   position: absolute;
   width: 100%;
   text-align: center;
+  height: 100vh;
+  overflow: scroll;
 }
 
-#btn-color {
+#beginBtn {
   background-color: #9d2f49;
   width: 200px;
   top: 150px;
