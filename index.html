@@ -155,10 +155,12 @@
       </div> <!-- end container -->
     </div> <!-- end copyright -->
   </footer>
+
+  <!-- modal -->
   <div id="searchModal" class="modal">
     <form action="" method="post">
       <div class="modal-content grey lighten-2">
-        <h4>Search for Poems</h4>
+        <h3>Search for Poems</h3>
         <div class="input-field"> <!-- Poet -->
           <i class="material-icons prefix">perm_identity</i>
           <input id="poet" type="text" class="validate">
@@ -169,9 +171,22 @@
           <input id="title" type="text" class="validate">
           <label for="title">Title</label>
         </div>
+        <div class="input-field"> <!-- Length -->
+          <select>
+            <option value="any" selected>Any</option>
+            <option value="short">Short</option>
+            <option value="medium">Medium</option>
+            <option value="long">Long</option>
+          </select>
+          <label>Select a length</label>
+        </div>
+        <h6 class="center grey-text text-darken-3">
+          Sort through poems by poet, title, length, or a combination of the former criteria.
+          <br>
+        </h6>
       </div> <!-- end modal content -->
       <div class="modal-footer grey lighten-2">
-        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Search</a>
+        <a href="#" class=" modal-action modal-close waves-effect waves-green btn-flat">Search</a>
       </div> <!-- end modal footer -->
     </form>
   </div> <!-- end modal -->
