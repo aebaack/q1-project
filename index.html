@@ -158,7 +158,7 @@
 
   <!-- modal -->
   <div id="searchModal" class="modal">
-    <form action="" method="post">
+    <form action="" name="poems" method="post">
       <div class="modal-content grey lighten-2">
         <h3>Search for Poems</h3>
         <div class="input-field"> <!-- Poet -->
@@ -172,7 +172,7 @@
           <label for="title">Title</label>
         </div>
         <div class="input-field"> <!-- Length -->
-          <select>
+          <select id="length">
             <option value="any" selected>Any</option>
             <option value="short">Short</option>
             <option value="medium">Medium</option>
@@ -186,7 +186,7 @@
         </h6>
       </div> <!-- end modal content -->
       <div class="modal-footer grey lighten-2">
-        <a href="#poemModal" class="modal-action modal-trigger poems waves-effect waves-light btn-flat">Search</a>
+        <a href="#poemModal" class="modal-action modal-trigger poems waves-effect waves-light btn-flat" id="searchPoems">Search</a>
       </div> <!-- end modal footer -->
     </form>
   </div> <!-- end modal -->
