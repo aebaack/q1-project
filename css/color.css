@@ -18,14 +18,6 @@ canvas {
   transition: background-color 5s linear;
 }
 
-.text {
-  position: relative;
-  z-index: 100;
-  width: 100%;
-  height: 90vh;
-  text-align: center;
-}
-
 .center-element {
   position: absolute;
   top: 50%;
@@ -35,6 +27,51 @@ canvas {
   -ms-transform: translate(-50%, -50%);
   -o-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
+  z-index: 100;
+}
+
+/* Poem Container */
+#poem {
+  position: relative;
+  z-index: 100;
+  width: 80%;
+  margin: auto;
+  padding: 20px 0;
+  text-align: center;
+}
+
+/* Poem Title */
+#title {
+  font-size: 34px;
+  line-height: 1.2;
+  margin-bottom: 10px;
+}
+
+/* Styling on Poet's Name */
+#poet {
+  font-size: 18px;
+  font-style: italic;
+  margin-bottom: 30px;
+}
+
+#poet:before {
+  content: "- ";
+}
+
+#poet:after {
+  content: " -";
+}
+
+/* Capitalize first line of stanza */
+#poem p:first-line {
+  	font-variant: small-caps;
+  	letter-spacing: 2px;
+}
+
+/* Styling text of each stanza */
+p {
+  line-height: 1.5;
+  letter-spacing: 1.3px;
 }
 
 #beginBtn {
