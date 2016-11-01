@@ -11,6 +11,7 @@ canvas {
   top: 0;
   left: 0;
   background-color: #2c2e43;
+  transition: background-color 5s linear;
 }
 
 .text {
