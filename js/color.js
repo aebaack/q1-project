@@ -78,7 +78,7 @@ $(document).ready(function() {
 
   function changeStanzaBackground() {
     poemStanza.html(stanzas[currentStanza]);
-    if (stanzaToneList[currentStanza].tone_categories.length !== 0) {
+    if (stanzas.length > 1 && stanzaToneList[currentStanza].tone_categories.length !== 0) {
       var stanzaTone = strongestTone(stanzaToneList[currentStanza].tone_categories[0].tones);
       changeBackground(stanzaTone);
     }
