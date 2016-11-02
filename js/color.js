@@ -44,18 +44,12 @@ $(document).ready(function() {
     // stanzaToneList is an array of tone objects for each stanza
     stanzaToneList = toneData["sentences_tone"];
 
-    // Particles colors for each tone
-    var colors = {
-      "Sadness": "#283593",
-      "Anger": "#b71c1c",
-      "Fear": "#1b5e20",
-      "Disgust": "#6a1b9a",
-      "Joy": "#ffee58"
-    };
-
     // Create particles JSON
-    var tempJSON = {"particles":{"number":{"value":24,"density":{"enable":true,"value_area":800}},"color":{"value":colors[strongestDocTone]},"shape":{"type":"polygon","stroke":{"width":0,"color":"#000"},"polygon":{"nb_sides":6},"image":{"src":"img/github.svg","width":100,"height":100}},"opacity":{"value":0.3,"random":true,"anim":{"enable":false,"speed":1,"opacity_min":0.1,"sync":false}},"size":{"value":31.565905665290902,"random":false,"anim":{"enable":true,"speed":10,"size_min":40,"sync":false}},"line_linked":{"enable":false,"distance":200,"color":"#ffffff","opacity":1,"width":2},"move":{"enable":true,"speed":8,"direction":"none","random":false,"straight":false,"out_mode":"out","bounce":false,"attract":{"enable":false,"roittateX":600,"rotateY":1200}}},"interactivity":{"detect_on":"canvas","events":{"onhover":{"enable":false,"mode":"grab"},"onclick":{"enable":false,"mode":"push"},"resize":true},"modes":{"grab":{"distance":400,"line_linked":{"opacity":1}},"bubble":{"distance":400,"size":40,"duration":2,"opacity":8,"speed":3},"repulse":{"distance":200,"duration":0.4},"push":{"particles_nb":4},"remove":{"particles_nb":2}}},"retina_detect":true};
-    particlesJS('particles-js', tempJSON); // Display particles
+    // var numParticles = Math.floor(Math.random() * 50) + 15;
+
+    // var tempJSON = {"particles":{"number":{"value":24,"density":{"enable":true,"value_area":800}},"color":{"value":colors[strongestDocTone]},"shape":{"type":"polygon","stroke":{"width":0,"color":"#000"},"polygon":{"nb_sides":6},"image":{"src":"img/github.svg","width":100,"height":100}},"opacity":{"value":0.3,"random":true,"anim":{"enable":false,"speed":1,"opacity_min":0.1,"sync":false}},"size":{"value":31.565905665290902,"random":false,"anim":{"enable":true,"speed":10,"size_min":40,"sync":false}},"line_linked":{"enable":false,"distance":200,"color":"#ffffff","opacity":1,"width":2},"move":{"enable":true,"speed":8,"direction":"none","random":false,"straight":false,"out_mode":"out","bounce":false,"attract":{"enable":false,"roittateX":600,"rotateY":1200}}},"interactivity":{"detect_on":"canvas","events":{"onhover":{"enable":false,"mode":"grab"},"onclick":{"enable":false,"mode":"push"},"resize":true},"modes":{"grab":{"distance":400,"line_linked":{"opacity":1}},"bubble":{"distance":400,"size":40,"duration":2,"opacity":8,"speed":3},"repulse":{"distance":200,"duration":0.4},"push":{"particles_nb":4},"remove":{"particles_nb":2}}},"retina_detect":true};
+
+    particlesJS('particles-js', createParticlesObj(strongestDocTone)); // Display particles
     changeBackground(strongestDocTone); // Change background color to entire poem tone
   });
 
@@ -138,4 +132,99 @@ function separateStanzas(poemLinesArr) {
   stanzasArr.push(stanza); // Adds the final stanza to stanzas array
   analyzeText+="."; // Adds the last period to analyzedText
   return [stanzasArr, analyzeText];
+}
+
+function createParticlesObj(tone) {
+  // Creates the particles object given the tone of the poem
+
+  // Particles colors for each tone
+  var colors = {
+    "Sadness": {"color": "#283593",
+                "size": 40 + Math.floor(Math.random() * 10),
+                "randomSize": false,
+                "amount": 10,
+                "moveSpeed": 0.4,
+                "moveDirection": "none",
+                "shape": "edge"},
+    "Anger": {"color": "#b71c1c",
+                "size": 15 + Math.floor(Math.random() * 10),
+                "randomSize": true,
+                "amount": 60,
+                "moveSpeed": 3,
+                "moveDirection": "bottom-right",
+                "shape": ["edge", "circle", "polygon"]},
+    "Fear": {"color": "#1b5e20",
+                "size": 20 + Math.floor(Math.random() * 10),
+                "randomSize": true,
+                "amount": 25,
+                "moveSpeed": 1.5,
+                "moveDirection": "none",
+                "shape": "circle"},
+    "Disgust": {"color": "#6a1b9a",
+                "size": 20 + Math.floor(Math.random() * 10),
+                "randomSize": true,
+                "amount": 45,
+                "moveSpeed": 1,
+                "moveDirection": "none",
+                "shape": ["edge","polygon"]},
+    "Joy": {"color": "#ffee58",
+                "size": 15 + Math.floor(Math.random() * 10),
+                "randomSize": false,
+                "amount": 55,
+                "moveSpeed": 2.5,
+                "moveDirection": "top",
+                "shape": ["circle", "edge", "polygon"]}
+  };
+
+  var colorObj = colors[tone];
+  console.log(colorObj);
+
+  var colorJSON = {
+    "particles": {
+      "number": {
+        "value": colorObj.amount
+      },
+      "shape": {
+        "type": colorObj.shape,
+        "polygon": {
+          "nb_sides": 6
+        }
+      },
+      "color": {
+        "value": colorObj.color
+      },
+      "opacity": {
+        "value": 1,
+        "random": true,
+        "anim": {
+          "enable": true,
+          "speed": 0.5,
+          "opacity_min": 0.4,
+          "sync": false
+        }
+      },
+      "size": {
+        "value": colorObj.size,
+        "random": colorObj.randomSize
+      },
+      "line_linked": {
+        "enable": false
+      },
+      "move": {
+        "enable": true,
+        "speed": colorObj.moveSpeed,
+        "direction": colorObj.moveDirection,
+        // "random": colorObj.moveRandom,
+        "straight": false
+      }
+    },
+    "interactivity": {
+      "events": {
+        "onhover": {
+          "enable": false
+        }
+      }
+    }
+  };
+  return colorJSON;
 }
