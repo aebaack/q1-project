@@ -1,6 +1,16 @@
 'use strict';
-$("#searchPoems").on("click", function() {
-  var poemForm = document.forms["poems"];
+
+var poemForm = document.forms["poems"];
+
+$(poemForm).on("input", function() {
+  if (poemForm.poet.value !== "" || poemForm.title !== "") {
+    $("#searchPoems").removeAttr("disabled");
+  } else {
+    $("#searchPoems").attr("disabled", "disabled");
+  }
+});
+
+$("#searchPoems").on("click", function(event) {
   var poet = poemForm["poet"].value;
   var title = poemForm["title"].value;
   var length = poemForm["length"].value;
