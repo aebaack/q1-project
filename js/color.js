@@ -1,43 +1,46 @@
 'use strict';
 $(document).ready(function() {
+  // Grab poem from localStorage, grab poem title and author header tags on the page
   var poem = JSON.parse(sessionStorage.getItem("poem"))[0];
   var title = $("#title").text(poem.title); // Poem title location
   var poet = $("#poet").text("By "+poem.author); // Poem author location
 
-  var stanzas = [], stanza = "", analyzeText = "";
+  // Break poem lines into individual stanzas to be displayed on the html page, and create an analyzeText string to send for text analysis
+  // analyzeText is structured as a single string of poetry text, where the end of each stanza of poetry is followed by a '.', so that Watson will analyze each stanza separately
+  var stanzas = [], stanza = "", analyzeText = ""; // stanzas is an array of stanzas formatted for displaying in HTML
   for (var i = 0; i < poem.lines.length; i++) {
     if (poem.lines[i] === "" && stanza !== "") {
       stanzas.push(stanza);
       stanza = "";
-      analyzeText+=". ";
+      analyzeText+=". "; // Ends the stanza with a period so that Watson will treat it as the end of a sentence
       continue;
     }
     stanza += poem.lines[i] + "<br>";
-    // analyzeText += poem.lines[i].replace("!", " ").replace(".", " ").replace("?"," ") + " ";
-    analyzeText += poem.lines[i].replace(/[!.?'"]/g, " ");
+    analyzeText += poem.lines[i].replace(/[!.?'"]/g, " "); // Removes any character that Watson would count as the end of a sentence
   }
-  stanzas.push(stanza);
-  analyzeText+=". ";
+  stanzas.push(stanza); // Adds the last stanza to stanzas array
+  analyzeText+="."; // Adds the last period to analyzedText
 
-  var tones = $.get("https://g-watson-aidanbaack.herokuapp.com/?text=" + analyzeText);
+  var tones = $.getJSON("https://g-watson-aidanbaack.herokuapp.com/?text=" + analyzeText);
+  // var tones = $.post("https://g-watson-aidanbaack.herokuapp.com/", analyzeText);
 
-  var poemStanza = $("#stanza"); // Poem stanza location
+  var poemStanza = $("#stanza"); // Poem 'p' tag
   poemStanza.hide(); // Hidden so that it can fade in later
 
-  var beginBtn = $("#beginBtn");
+  var beginBtn = $("#beginBtn"); // Button to start poem reading
 
-  var loader = $(".progress");
+  var loader = $(".progress"); // Loading bar
 
   beginBtn.on("click", function() {
     beginBtn.hide();
     poemStanza.html(stanzas[0]);
-    //currentStanza will break if only one stanza
     changeStanzaBackground();
     poemStanza.fadeIn(3000);
   });
 
   var stanzaToneList, currentStanza = 0;
   tones.done(function (data) {
+    console.log("data: ", data);
     loader.hide();
     poet.removeClass("hide");
     title.removeClass("hide");
@@ -53,7 +56,9 @@ $(document).ready(function() {
       "Disgust": "#6a1b9a",
       "Joy": "#ffee58"
     };
-
+    console.log(stanzas);
+    console.log(data);
+    console.log(stanzaToneList);
     var tempJSON = {"particles":{"number":{"value":24,"density":{"enable":true,"value_area":800}},"color":{"value":colors[strongest]},"shape":{"type":"polygon","stroke":{"width":0,"color":"#000"},"polygon":{"nb_sides":6},"image":{"src":"img/github.svg","width":100,"height":100}},"opacity":{"value":0.3,"random":true,"anim":{"enable":false,"speed":1,"opacity_min":0.1,"sync":false}},"size":{"value":31.565905665290902,"random":false,"anim":{"enable":true,"speed":10,"size_min":40,"sync":false}},"line_linked":{"enable":false,"distance":200,"color":"#ffffff","opacity":1,"width":2},"move":{"enable":true,"speed":8,"direction":"none","random":false,"straight":false,"out_mode":"out","bounce":false,"attract":{"enable":false,"roittateX":600,"rotateY":1200}}},"interactivity":{"detect_on":"canvas","events":{"onhover":{"enable":false,"mode":"grab"},"onclick":{"enable":false,"mode":"push"},"resize":true},"modes":{"grab":{"distance":400,"line_linked":{"opacity":1}},"bubble":{"distance":400,"size":40,"duration":2,"opacity":8,"speed":3},"repulse":{"distance":200,"duration":0.4},"push":{"particles_nb":4},"remove":{"particles_nb":2}}},"retina_detect":true};
     particlesJS('particles-js', tempJSON);
     changeBackground(strongest);
