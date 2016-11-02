@@ -61,7 +61,9 @@ $(document).ready(function() {
   $(window).keydown(function(event) {
     switch (event.which) {
       case 37:
+        // console.log("left");
         if (currentStanza > 0) {
+          // console.log("ran");
           currentStanza--;
           poemStanza.html(stanzas[currentStanza]);
           var stanzaTone = strongestTone(stanzaToneList[currentStanza].tone_categories[0].tones);
@@ -69,7 +71,9 @@ $(document).ready(function() {
         }
         break;
       case 39:
-        if (currentStanza < stanzaToneList.length - 1) {
+        // console.log("right");
+        if (currentStanza < stanzaToneList.length) {
+          // console.log("ran");
           poemStanza.html(stanzas[currentStanza]);
           var stanzaTone = strongestTone(stanzaToneList[currentStanza].tone_categories[0].tones);
           changeBackground(stanzaTone);

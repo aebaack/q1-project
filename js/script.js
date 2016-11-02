@@ -20,7 +20,7 @@ $("#searchPoems").on("click", function() {
         var divHeader = $("<div>"), divBody = $("<div>");
         divHeader.attr("class", "collapsible-header clearfix");
         divHeader.append($("<div>").attr("class", "left").text(data[i].title)); divHeader.append($("<a>").attr("class", "waves-effect waves-light btn-flat red lighten-2 right poemSelector").attr("id", data[i].title).css("margin-top", "4px").text("Select"));
-        divBody.attr("class", "collapsible-body white");
+        divBody.attr("class", "collapsible-body grey lighten-5");
         var poemLines = "";
         for (var j = 0; j < data[i].lines.length; j++) {
           poemLines += data[i].lines[j] + "<br>";
