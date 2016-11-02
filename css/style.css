@@ -42,3 +42,7 @@ body {
     height: 175px;
   }
 }
+
+.clearfix {
+  overflow: auto;
+}

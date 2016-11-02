@@ -9,15 +9,15 @@ $("#searchPoems").on("click", function() {
   } else {
     var poem = $.getJSON("http://poetdb.herokuapp.com/author/"+poet);
     var ul = $("#poemList");
-    $(ul).attr("class", "collapsible");
     poem.done(function(data) {
+      $(ul).removeClass("hide");
       for (var i = 0; i < data.length; i++) {
         if (data[i].lines.length > 500) {
           continue;
         }
         var li = $("<li>");
         var divHeader = $("<div>"), divBody = $("<div>");
-        divHeader.attr("class", "collapsible-header").html(data[i].title + '<a class="waves-effect waves-teal btn-flat poemSelector" id="' + data[i].title + '">Select</a>');
+        divHeader.attr("class", "collapsible-header clearfix").html('<div class="left">' + data[i].title + '</div><a class="waves-effect waves-teal btn-flat right poemSelector" id="' + data[i].title + '">Select</a>');
         divBody.attr("class", "collapsible-body white");
         var poemLines = "";
         for (var j = 0; j < data[i].lines.length; j++) {
