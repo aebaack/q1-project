@@ -23,6 +23,7 @@ $("#searchPoems").on("click", function(event) {
   } else if (title.length) {
     poem = $.getJSON("http://poetdb.herokuapp.com/title/"+title);
   }
+
   var ul = $("#poemList");
   $(ul).children().remove(); // Remove past searches from displaying upon a new search
   $(".preloader-wrapper").removeClass("hide"); // Make sure the loader displays on a new search
@@ -43,11 +44,11 @@ $("#searchPoems").on("click", function(event) {
       divHeader.attr("class", "collapsible-header clearfix");
       divHeader.append($("<div>").attr("class", "left").text(data[i].title)); divHeader.append($("<a>").attr("class", "waves-effect waves-light btn-flat red lighten-2 right poemSelector").attr("id", data[i].title).css("margin-top", "4px").text("Select"));
       divBody.attr("class", "collapsible-body grey lighten-5");
-      var poemLines = "";
+      var poemLines = data[i].author + "<br><br>";
       for (var j = 0; j < data[i].lines.length; j++) {
         poemLines += data[i].lines[j] + "<br>";
       }
-      $(divBody).html(poemLines);
+      $(divBody).html(poemLines + "<br>");
       li.append(divHeader).append(divBody);
       ul.append(li);
     }
