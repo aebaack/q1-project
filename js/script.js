@@ -9,9 +9,11 @@ $("#searchPoems").on("click", function() {
   } else {
     var poem = $.getJSON("http://poetdb.herokuapp.com/author/"+poet);
     var ul = $("#poemList");
+    $(ul).children().remove(); // Remove past searches from displaying upon a new search
+    $(".preloader-wrapper").removeClass("hide"); // Make sure the loader displays on a new search
     poem.done(function(data) {
+      console.log(data.status);
       $(ul).removeClass("hide");
-      $(ul).children().remove();
       for (var i = 0; i < data.length; i++) {
         if (data[i].lines.length > 500) {
           continue;
@@ -29,7 +31,7 @@ $("#searchPoems").on("click", function() {
         li.append(divHeader).append(divBody);
         ul.append(li);
       }
-      $(".preloader-wrapper").attr("class", "hide");
+      $(".preloader-wrapper").addClass("hide");
       $("#loadingPoems").text("Select a Poem");
       $(".poemSelector").on("click", selectPoem);
     });
