@@ -11,6 +11,7 @@ $("#searchPoems").on("click", function() {
     var ul = $("#poemList");
     poem.done(function(data) {
       $(ul).removeClass("hide");
+      $(ul).children().remove();
       for (var i = 0; i < data.length; i++) {
         if (data[i].lines.length > 500) {
           continue;
