@@ -1,5 +1,20 @@
 'use strict';
 
+$(".random").on("click", function() {
+  console.log("ran");
+  var titles = $.getJSON("http://poetdb.herokuapp.com/title");
+  titles.done(function(titleList) {
+    console.log(titleList);
+    var poemTitle = titleList.titles[Math.floor(Math.random() * titleList.titles.length)];
+    console.log(poemTitle);
+    var poem = $.getJSON("http://poetdb.herokuapp.com/title/"+poemTitle+":abs");
+    poem.done(function(data) {
+      sessionStorage.setItem("poem", JSON.stringify(data));
+      document.location.href = "color.html";
+    });
+  });
+});
+
 var poemForm = document.forms["poems"];
 
 $(poemForm).on("input", function() {
