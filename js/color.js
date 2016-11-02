@@ -30,8 +30,9 @@ $(document).ready(function() {
 
   beginBtn.on("click", function() {
     beginBtn.hide();
-    poemStanza.html(stanzas[currentStanza++]);
+    poemStanza.html(stanzas[0]);
     //currentStanza will break if only one stanza
+    changeStanzaBackground();
     poemStanza.fadeIn(3000);
   });
 
@@ -63,25 +64,26 @@ $(document).ready(function() {
       case 37:
         if (currentStanza > 0) {
           currentStanza--;
-          poemStanza.html(stanzas[currentStanza]);
-          if (stanzaToneList[currentStanza].tone_categories.length !== 0) {
-            var stanzaTone = strongestTone(stanzaToneList[currentStanza].tone_categories[0].tones);
-            changeBackground(stanzaTone);
-          }
+          changeStanzaBackground();
         }
         break;
       case 39:
         if (currentStanza < (stanzas.length-1)) {
           currentStanza++;
-          poemStanza.html(stanzas[currentStanza]);
-          if (stanzaToneList[currentStanza].tone_categories.length !== 0) {
-            var stanzaTone = strongestTone(stanzaToneList[currentStanza].tone_categories[0].tones);
-            changeBackground(stanzaTone);
-          }
+          changeStanzaBackground();
         }
         break;
     }
   });
+
+  function changeStanzaBackground() {
+    poemStanza.html(stanzas[currentStanza]);
+    if (stanzaToneList[currentStanza].tone_categories.length !== 0) {
+      var stanzaTone = strongestTone(stanzaToneList[currentStanza].tone_categories[0].tones);
+      changeBackground(stanzaTone);
+    }
+  }
+
 });
 
 function strongestTone (toneData) {
