@@ -122,10 +122,12 @@ function separateStanzas(poemLinesArr) {
   // analyzeText (string) - text to be analyzed for tone
   var stanzasArr = [], stanza = "", analyzeText = "";
   for (var i = 0; i < poemLinesArr.length; i++) {
-    if (poemLinesArr[i] === "" && stanza !== "") {
-      stanzasArr.push(stanza.trim());
-      stanza = "";
-      analyzeText+=". ";
+    if (poemLinesArr[i] === "") {
+      if (stanza !== "") {
+        stanzasArr.push(stanza.trim());
+        stanza = "";
+        analyzeText+=". ";
+      }
       continue;
     }
     stanza += poemLinesArr[i] + "<br>";
