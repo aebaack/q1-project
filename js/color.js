@@ -61,23 +61,23 @@ $(document).ready(function() {
   $(window).keydown(function(event) {
     switch (event.which) {
       case 37:
-        // console.log("left");
         if (currentStanza > 0) {
-          // console.log("ran");
           currentStanza--;
           poemStanza.html(stanzas[currentStanza]);
-          var stanzaTone = strongestTone(stanzaToneList[currentStanza].tone_categories[0].tones);
-          changeBackground(stanzaTone);poemStanza.html
+          if (stanzaToneList[currentStanza].tone_categories.length !== 0) {
+            var stanzaTone = strongestTone(stanzaToneList[currentStanza].tone_categories[0].tones);
+            changeBackground(stanzaTone);
+          }
         }
         break;
       case 39:
-        // console.log("right");
-        if (currentStanza < stanzaToneList.length) {
-          // console.log("ran");
-          poemStanza.html(stanzas[currentStanza]);
-          var stanzaTone = strongestTone(stanzaToneList[currentStanza].tone_categories[0].tones);
-          changeBackground(stanzaTone);
+        if (currentStanza < (stanzas.length-1)) {
           currentStanza++;
+          poemStanza.html(stanzas[currentStanza]);
+          if (stanzaToneList[currentStanza].tone_categories.length !== 0) {
+            var stanzaTone = strongestTone(stanzaToneList[currentStanza].tone_categories[0].tones);
+            changeBackground(stanzaTone);
+          }
         }
         break;
     }
