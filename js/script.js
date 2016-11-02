@@ -3,7 +3,7 @@
 var poemForm = document.forms["poems"];
 
 $(poemForm).on("input", function() {
-  if (poemForm.poet.value !== "" || poemForm.title !== "") {
+  if (poemForm.poet.value !== "" || poemForm.title.value !== "") {
     $("#searchPoems").removeAttr("disabled");
   } else {
     $("#searchPoems").attr("disabled", "disabled");
