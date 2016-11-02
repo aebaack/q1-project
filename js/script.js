@@ -18,7 +18,7 @@ $("#searchPoems").on("click", function() {
         var li = $("<li>");
         var divHeader = $("<div>"), divBody = $("<div>");
         divHeader.attr("class", "collapsible-header clearfix");
-        divHeader.append($("<div>").attr("class", "left").text(data[i].title)); divHeader.append($("<a>").attr("class", "waves-effect waves-teal btn-flat right poemSelector").attr("id", data[i].title).text("Select"));
+        divHeader.append($("<div>").attr("class", "left").text(data[i].title)); divHeader.append($("<a>").attr("class", "waves-effect waves-light btn-flat red lighten-2 right poemSelector").attr("id", data[i].title).css("margin-top", "4px").text("Select"));
         divBody.attr("class", "collapsible-body white");
         var poemLines = "";
         for (var j = 0; j < data[i].lines.length; j++) {
