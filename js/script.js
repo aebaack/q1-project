@@ -16,25 +16,45 @@ $(".random").on("click", function() {
   });
 });
 
+// Custom text input box
+var customTextInput = $("#customText");
+
+// Custom text submit button
+var customTextSubmit = $("#customTextSubmit");
+
+// Input box data has changed
+$(customTextInput).on("input", function() {
+  console.log(customTextInput.val());
+  console.log(customTextInput.attr("length"));
+  if (customTextInput.val().length > 5 && customTextInput.val().length <= customTextInput.attr("length")) {
+    customTextSubmit.removeAttr("disabled");
+  } else {
+    customTextSubmit.attr("disabled", "disabled");
+  }
+});
+
 // Poem search form
-var poemForm = document.forms["poems"];
+var poemSearchForm = document.forms["poems"];
+
+// Poem search submit button
+var poemSearchSubmit = $("#searchPoems");
 
 // Poem Search data has changed
-$(poemForm).on("input", function() {
+$(poemSearchForm).on("input", function() {
   // Keep Search button disabled when no text is present in inputs
-  if (poemForm.poet.value !== "" || poemForm.title.value !== "") {
-    $("#searchPoems").removeAttr("disabled"); // Allow search
+  if (poemSearchForm.poet.value !== "" || poemSearchForm.title.value !== "") {
+    poemSearchSubmit.removeAttr("disabled"); // Allow search
   } else {
-    $("#searchPoems").attr("disabled", "disabled"); // Disable search
+    poemSearchSubmit.attr("disabled", "disabled"); // Disable search
   }
 });
 
 // Poem has been searched for
-$("#searchPoems").on("click", function(event) {
+$(poemSearchSubmit).on("click", function(event) {
   // Search variables
-  var poet = poemForm["poet"].value; // Name of the poet
-  var title = poemForm["title"].value; // Title of the poem
-  var length = poemForm["length"].value; // Length of the poem
+  var poet = poemSearchForm["poet"].value; // Name of the poet
+  var title = poemSearchForm["title"].value; // Title of the poem
+  var length = poemSearchForm["length"].value; // Length of the poem
 
   var ul = $("#poemList"); // Collapsible list holder
   $(ul).children().remove(); // Remove past searches from displaying upon a new search
