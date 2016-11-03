@@ -38,7 +38,6 @@ $(document).ready(function() {
   var stanzaToneList, strongestDocTone, currentStanza = 0; // stanzaToneList is an array of tone analysis data indexed for each stanza, and currentStanza keeps track of the current displaying stanza
 
   tones.done(function (toneData) {
-    console.log("data: ", toneData);
     loader.hide(); // Hide loading bar
 
     // Display poet, poem title, and begin button
@@ -160,6 +159,7 @@ function changeBackground(tone, docTone) {
   //   "Disgust": ["#5C2A9B", "#3E1C68", "#6C0DAC"],
   //   "Joy": ["#939d7d"] //"#E9DD87", "#E9C873", "#E9CA0E"
   // };
+  $(".tone-text").text(tone);
   var color = colorBackground[tone];
   $("#particles-js").css("background-color", color);
   $(document.body).css("background-color" , color);

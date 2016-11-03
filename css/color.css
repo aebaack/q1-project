@@ -35,12 +35,27 @@ canvas {
   top: 0;
   left: 0;
   z-index: 101;
-  padding: 1rem;
+  padding: 0.5rem;
   cursor: pointer;
+}
+
+.tone {
+  position:fixed;
+  top: 0;
+  right: 0;
+  z-index: 101;
+  padding: 0;
+}
+
+.tone-text {
+  font-size: 1rem;
+  margin: 1rem;
+  user-select: none;
 }
 
 .close-text {
   font-size: 2.5rem;
+  user-select: none;
 }
 
 .arrow {
@@ -69,6 +84,7 @@ canvas {
   z-index: 100;
   width: 80%;
   margin: auto;
+  margin-top: 2.5rem;
   padding: 20px 0;
   text-align: center;
   font-family: 'Libre Baskerville';
