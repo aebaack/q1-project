@@ -27,12 +27,27 @@
 </head>
 <body>
   <div id="particles-js">
-    <div class="container">
+    <!-- <div class="container">
       <div class="progress">
         <div class="indeterminate"></div>
       </div>
+    </div> -->
+  </div>
+
+  <div class="center-element" id="loader">
+    <div class="preloader-wrapper big active">
+      <div class="spinner-layer spinner-red-only">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div><div class="gap-patch">
+          <div class="circle"></div>
+        </div><div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
     </div>
   </div>
+
   <a class="btn-large waves-effect waves-light center-element hide" id="beginBtn">Begin</a>
 
   <div class="arrow previous valign-wrapper">
@@ -41,11 +56,11 @@
   <div class="arrow next valign-wrapper">
     <i class="material-icons white-text arrow-text">chevron_right</i>
   </div>
-  
-  <div id="poem">
+
+  <div class="hide" id="poem">
     <div class="z-depth-4" id="grayBackground">
-      <h1 class="white-text hide" id="title"></h1>
-      <h2 class="white-text hide" id="poet"></h2>
+      <h1 class="white-text" id="title"></h1>
+      <h2 class="white-text" id="poet"></h2>
       <p class="white-text flow-text" id="stanza"></p>
     </div>
   </div>

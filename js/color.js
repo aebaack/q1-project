@@ -6,7 +6,7 @@ $(document).ready(function() {
   var poet = $("#poet").text("By "+poem.author); // Poem <h2> author location
   var poemStanza = $("#stanza"); // Poem <p> stanza location
   var beginBtn = $("#beginBtn"); // Start button for poem reading
-  var loader = $(".progress"); // Loading bar
+  var loader = $("#loader"); // Loading circle
 
   poemStanza.hide(); // Hidden so that it can fade in later
 
@@ -15,6 +15,15 @@ $(document).ready(function() {
     poemStanza.html(stanzas[0]); // Set text of first stanza
     changeStanzaBackground(); // Change background to current tone
     poemStanza.fadeIn(3000); // Fade in first stanza
+
+    // Add click events to arrows
+    $(".next").on("click", function() {
+      nextStanza();
+    });
+
+    $(".previous").on("click", function() {
+      previousStanza();
+    });
   });
 
   // Stanza Display and Analysis Data
@@ -34,8 +43,7 @@ $(document).ready(function() {
     loader.hide(); // Hide loading bar
 
     // Display poet, poem title, and begin button
-    poet.removeClass("hide");
-    title.removeClass("hide");
+    $("#poem").removeClass("hide");
     beginBtn.removeClass("hide");
 
     // docTones is a tone data object for the entire poem
@@ -58,14 +66,6 @@ $(document).ready(function() {
         nextStanza();
         break;
     }
-  });
-
-  $(".next").on("click", function() {
-    nextStanza();
-  });
-
-  $(".previous").on("click", function() {
-    previousStanza();
   });
 
   function previousStanza() {
