@@ -32,7 +32,7 @@
         <!-- Desktop navigation -->
         <ul class="right hide-on-med-and-down">
           <li><a href="#searchModal" class="modal-trigger search white-text"><i class="material-icons left">search</i>search</a></li>
-          <li><a href="#about" class="white-text"><i class="material-icons left">info_outline</i>about</a></li>
+          <li><a href="#customModal" class="modal-trigger custom white-text"><i class="material-icons left">info_outline</i>custom</a></li>
           <li><a href="#" class="btn waves-effect waves-light rounded-corners no-uppercase red random">random poem</a></li>
         </ul>
         <!-- Hamburger menu (mobile) navigation -->
@@ -216,5 +216,20 @@
       <a href="#!" class="modal-action modal-close waves-effect waves-light btn-flat">Close</a>
     </div> <!-- end modal footer -->
   </div> <!-- end modal -->
+
+  <div id="customModal" class="modal modal-fixed-footer">
+    <div class="modal-content blue-grey lighten-5">
+      <h3>Enter custom text</h3>
+      <br>
+      <div class="input-field col s12">
+        <textarea id="customText" class="materialize-textarea" length="1000" placeholder="Enter custom text less than 1000 characters.
+Stanzas should be separated by blank lines."></textarea>
+        <label for="customText">Custom Text</label>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-action modal-close waves-effect waves-light btn-flat">Submit</a>
+    </div>
+  </div>
 </body>
 </html>

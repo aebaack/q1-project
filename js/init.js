@@ -5,6 +5,7 @@ $(document).ready(function (){
   $(".poems").leanModal({
     dismissible: false
   });
+  $(".custom").leanModal();
   $('input.autocomplete').autocomplete({
     data: {
       "Adam Lindsay Gordon": null,

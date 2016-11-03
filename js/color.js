@@ -24,6 +24,7 @@ $(document).ready(function() {
 
   // Poem tone analysis
   var tones = $.getJSON("https://g-watson-aidanbaack.herokuapp.com/?text=" + analyzeText);
+  // var analyzeText = "This is a sentence.";
   // var tones = $.post("https://g-watson-aidanbaack.herokuapp.com/", analyzeText);
 
   var stanzaToneList, strongestDocTone, currentStanza = 0; // stanzaToneList is an array of tone analysis data indexed for each stanza, and currentStanza keeps track of the current displaying stanza
@@ -70,7 +71,8 @@ $(document).ready(function() {
     }
   });
 
-  function changeStanzaBackground() { // Change background color to match stanza tone and display the stanza
+  function changeStanzaBackground() {
+    // Change background color to match stanza tone and display the stanza
     poemStanza.html(stanzas[currentStanza]); // Displays stanza
     if (stanzas.length > 1 && stanzaToneList[currentStanza].tone_categories.length !== 0) {
       var stanzaTone = strongestTone(stanzaToneList[currentStanza].tone_categories[0].tones);
@@ -256,7 +258,6 @@ function createParticlesObj(tone) {
         "enable": true,
         "speed": colorObj.moveSpeed,
         "direction": colorObj.moveDirection,
-        // "random": colorObj.moveRandom,
         "straight": false
       }
     },
