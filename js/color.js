@@ -74,7 +74,6 @@ $(document).ready(function() {
     poemStanza.html(stanzas[currentStanza]); // Displays stanza
     if (stanzas.length > 1 && stanzaToneList[currentStanza].tone_categories.length !== 0) {
       var stanzaTone = strongestTone(stanzaToneList[currentStanza].tone_categories[0].tones);
-      console.log(strongestDocTone);
       changeBackground(stanzaTone, strongestDocTone);
     }
   }
@@ -95,8 +94,6 @@ function strongestTone (toneData) {
 function changeBackground(tone, docTone) {
   // Changes background color to the given tone
   var colorBackground;
-  console.log(docTone);
-  console.log(tone);
   switch (docTone) {
     case "Sadness":
       colorBackground = {
@@ -105,7 +102,7 @@ function changeBackground(tone, docTone) {
         "Fear": "#042a06", //#042a06, 032f15
         "Disgust": "#350146",
         "Joy": "#E9DD87"
-      }
+      };
       break;
     case "Anger":
       colorBackground = {
@@ -114,7 +111,7 @@ function changeBackground(tone, docTone) {
         "Fear": "#0f2d0b",
         "Disgust": "#340f3c",
         "Joy": "#d29158"
-      }
+      };
       break;
     case "Fear":
       colorBackground = {
@@ -123,7 +120,7 @@ function changeBackground(tone, docTone) {
         "Fear": "#0b2803",
         "Disgust": "#2b0039",
         "Joy": "#b18c6b"
-      }
+      };
       break;
     case "Disgust":
       colorBackground = {
@@ -132,7 +129,7 @@ function changeBackground(tone, docTone) {
         "Fear": "#0b1e0a",
         "Disgust": "#8c54b6", //#dbaaff
         "Joy": "#ffd2aa"
-      }
+      };
       break;
     case "Joy":
       colorBackground = {
@@ -141,7 +138,7 @@ function changeBackground(tone, docTone) {
         "Fear": "#133910",
         "Disgust": "#2e1043",
         "Joy": "#938958" //8c6c34
-      }
+      };
       break;
   }
   // var colorBackground = {
@@ -151,7 +148,6 @@ function changeBackground(tone, docTone) {
   //   "Disgust": ["#5C2A9B", "#3E1C68", "#6C0DAC"],
   //   "Joy": ["#939d7d"] //"#E9DD87", "#E9C873", "#E9CA0E"
   // };
-  console.log(colorBackground); //Test brothers by Hopkins
   var color = colorBackground[tone];
   $("#particles-js").css("background-color", color);
   $(document.body).css("background-color" , color);
@@ -201,30 +197,29 @@ function createParticlesObj(tone) {
                 "moveDirection": "bottom-right",
                 "shape": ["edge", "circle", "polygon"]},
     "Fear": {"color": "#1b5e20",
-                "size": 50 + Math.floor(Math.random() * 10),
-                "randomSize": true,
-                "amount": 25,
-                "moveSpeed": 1.5,
+                "size": 100 + Math.floor(Math.random() * 30),
+                "randomSize": false,
+                "amount": 12,
+                "moveSpeed": 7,
                 "moveDirection": "none",
-                "shape": "circle"},
+                "shape": "polygon"},
     "Disgust": {"color": "#6a1b9a",
-                "size": 20 + Math.floor(Math.random() * 10),
+                "size": 70 + Math.floor(Math.random() * 10),
                 "randomSize": true,
                 "amount": 45,
-                "moveSpeed": 1,
+                "moveSpeed": 8,
                 "moveDirection": "none",
                 "shape": ["edge","polygon"]},
     "Joy": {"color": "#ffee58",
-                "size": 15 + Math.floor(Math.random() * 10),
-                "randomSize": false,
-                "amount": 55,
-                "moveSpeed": 2.5,
+                "size": 30 + Math.floor(Math.random() * 10),
+                "randomSize": true,
+                "amount": 40,
+                "moveSpeed": 4,
                 "moveDirection": "top",
                 "shape": ["circle", "edge", "polygon"]}
   };
 
   var colorObj = colors[tone];
-  console.log(colorObj);
 
   var colorJSON = {
     "particles": {
