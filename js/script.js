@@ -1,38 +1,6 @@
 'use strict';
 
-$(".random").on("click", function() {
-  // Random Poem
-  console.log("ran");
-  var titles = $.getJSON("http://poetdb.herokuapp.com/title");
-  titles.done(function(titleList) {
-    console.log(titleList);
-    var poemTitle = titleList.titles[Math.floor(Math.random() * titleList.titles.length)];
-    console.log(poemTitle);
-    var poem = $.getJSON("http://poetdb.herokuapp.com/title/"+poemTitle+":abs");
-    poem.done(function(data) {
-      sessionStorage.setItem("poem", JSON.stringify(data));
-      document.location.href = "color.html";
-    });
-  });
-});
-
-// Custom text input box
-var customTextInput = $("#customText");
-
-// Custom text submit button
-var customTextSubmit = $("#customTextSubmit");
-
-// Input box data has changed
-$(customTextInput).on("input", function() {
-  console.log(customTextInput.val());
-  console.log(customTextInput.attr("length"));
-  if (customTextInput.val().length > 5 && customTextInput.val().length <= customTextInput.attr("length")) {
-    customTextSubmit.removeAttr("disabled");
-  } else {
-    customTextSubmit.attr("disabled", "disabled");
-  }
-});
-
+// ----- SEARCH ----- //
 // Poem search form
 var poemSearchForm = document.forms["poems"];
 
@@ -50,7 +18,7 @@ $(poemSearchForm).on("input", function() {
 });
 
 // Poem has been searched for
-$(poemSearchSubmit).on("click", function(event) {
+$(poemSearchSubmit).on("click", function() {
   // Search variables
   var poet = poemSearchForm["poet"].value; // Name of the poet
   var title = poemSearchForm["title"].value; // Title of the poem
@@ -132,8 +100,69 @@ $(poemSearchSubmit).on("click", function(event) {
   function selectPoem(event) {
     var index = $(event.target).attr("id"); // Finds poems location in poemList
     var poemData = poemList[index];
-    sessionStorage.setItem("poem", JSON.stringify(poemData)); // Puts poem in sessionStorage
-    document.location.href = "color.html"; // Goes to color.html
+    sendPoemToColor(poemData);
   }
 
 });
+
+
+// ----- CUSTOM TEXT ----- //
+// Custom text input box
+var customTextInput = $("#customText");
+
+// Custom text submit button
+var customTextSubmit = $("#customTextSubmit");
+
+// Input box data has changed
+$(customTextInput).on("input", function() {
+  // Keep Submit button disabled when text is too long or too short
+  if (customTextInput.val().length > 5 && customTextInput.val().length <= customTextInput.attr("length")) {
+    customTextSubmit.removeAttr("disabled"); // Allow search
+  } else {
+    customTextSubmit.attr("disabled", "disabled"); // Disable search
+  }
+});
+
+// Custom text has been submitted
+$(customTextSubmit).on("click", function() {
+  var poet = "Anonymous Poet"; // Placeholder
+  var title = "Anonymous Poem"; // Placeholder
+  var text = customTextInput.val(); // Text in input field
+  var lines = []; // Array of each line in the poem
+  var currentLine = ""; // String that holds the current characters in the line
+  for (var i = 0; i < text.length; i++) {
+    if (text[i].match(/\n/)) { // Found a newline character
+      lines.push(currentLine); // Add currentLine to lines
+      currentLine = ""; // Reset currentLine
+    } else {
+      currentLine += text[i]
+    }
+  }
+  lines.push(currentLine); // Add the last line
+  var poemObj = {"author": poet, "title": title, "lines": lines}; // Structure poem data
+  sendPoemToColor(poemObj);
+});
+
+
+// ----- RANDOM ----- //
+$(".random").on("click", function() {
+  // Random Poem
+  var titles = $.getJSON("http://poetdb.herokuapp.com/title");
+  titles.done(function(titleList) {
+    var poemTitle = titleList.titles[Math.floor(Math.random() * titleList.titles.length)];
+    var poem = $.getJSON("http://poetdb.herokuapp.com/title/"+poemTitle+":abs");
+    poem.done(function(data) {
+      sessionStorage.setItem("poem", JSON.stringify(data));
+      document.location.href = "color.html";
+    });
+  });
+});
+
+
+// ----- SEND POEM TO COLOR.HTML ---- //
+function sendPoemToColor(poemObj) {
+  console.log(poemObj);
+  // Receives poem object, puts it in sessionStorage, and goes to color.html
+  sessionStorage.setItem("poem", JSON.stringify(poemObj)); // Puts poem in sessionStorage
+  document.location.href = "color.html"; // Goes to color.html
+}

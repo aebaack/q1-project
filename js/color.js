@@ -25,7 +25,7 @@ $(document).ready(function() {
   // Poem tone analysis
   var tones = $.getJSON("https://g-watson-aidanbaack.herokuapp.com/?text=" + analyzeText);
   // var analyzeText = "This is a sentence.";
-  // var tones = $.post("https://g-watson-aidanbaack.herokuapp.com/", analyzeText);
+  // var tones = $.post("https://g-watson-aidanbaack.herokuapp.com/", {"text": analyzeText});
 
   var stanzaToneList, strongestDocTone, currentStanza = 0; // stanzaToneList is an array of tone analysis data indexed for each stanza, and currentStanza keeps track of the current displaying stanza
 
