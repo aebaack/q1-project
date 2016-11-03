@@ -1,7 +1,7 @@
 'use strict';
 $(document).ready(function() {
   // Poem Object and Display Data
-  var poem = JSON.parse(sessionStorage.getItem("poem"))[0];
+  var poem = JSON.parse(sessionStorage.getItem("poem"));
   var title = $("#title").text(poem.title); // Poem <h1> title location
   var poet = $("#poet").text("By "+poem.author); // Poem <h2> author location
   var poemStanza = $("#stanza"); // Poem <p> stanza location

@@ -50,7 +50,10 @@ $("#searchPoems").on("click", function(event) {
     poem = $.getJSON("http://poetdb.herokuapp.com/title/"+title);
   }
 
+  var poemList; // Holds poem data to use when result is selected
   poem.done(function(data) { // Poem search has finished
+    poemList = data;
+
     $(".preloader-wrapper").addClass("hide"); // Hide the loading circle
 
     if (data.status) { // Poem not found or other error
@@ -75,8 +78,14 @@ $("#searchPoems").on("click", function(event) {
       divHeader.attr("class", "collapsible-header clearfix");
       divBody.attr("class", "collapsible-body grey lighten-5");
 
-      // Add poem title and select button
-      divHeader.append($("<div>").attr("class", "left").text(data[i].title)); divHeader.append($("<a>").attr("class", "waves-effect waves-light btn-flat red lighten-2 right poemSelector").attr("id", data[i].title).css("margin-top", "4px").text("Select"));
+      // Add poem title
+      divHeader.append($("<div>").attr("class", "left").text(data[i].title));
+
+      // Select Button creation
+      var selectBtn = $("<a>"); // Create new select button
+      selectBtn.attr("class", "waves-effect waves-light btn-flat red lighten-2 right poemSelector"); // Style button
+      selectBtn.attr("id", i).css("margin-top", "4px").text("Select"); // Add top margin and Select text
+      divHeader.append(selectBtn);
 
       // Create lines to display in collapsible text (author and text)
       var poemLines = data[i].author + "<br><br>";
@@ -100,14 +109,11 @@ $("#searchPoems").on("click", function(event) {
     $("#notFound").removeClass("hide"); // Display Not Found text
   });
 
-});
+  function selectPoem(event) {
+    var index = $(event.target).attr("id"); // Finds poems location in poemList
+    var poemData = poemList[index];
+    sessionStorage.setItem("poem", JSON.stringify(poemData)); // Puts poem in sessionStorage
+    document.location.href = "color.html"; // Goes to color.html
+  }
 
-function selectPoem(event) {
-  var title = $(event.target).attr("id");
-  // var lines = $(event.target.parentElement.nextSibling).html();
-  var poemData = $.getJSON("http://poetdb.herokuapp.com/title/" + title +":abs");
-  poemData.done(function(data) {
-    sessionStorage.setItem("poem", JSON.stringify(data));
-    document.location.href = "color.html";
-  });
-}
+});
