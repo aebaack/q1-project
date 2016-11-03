@@ -30,6 +30,46 @@ canvas {
   z-index: 100;
 }
 
+/*.arrow {
+  position: absolute;
+  height: 100%;
+  top: 50%;
+  -moz-transform: translate(0, -50%);
+  -webkit-transform: translate(0, -50%);
+  -ms-transform: translate(0, -50%);
+  -o-transform: translate(0, -50%);
+  transform: translate(0, -50%);
+  z-index: 100;
+}
+
+.right-arrow {
+  right: -20px;
+}
+
+.left-arrow {
+  left: -20px;
+}*/
+
+.arrow {
+  height: 100%;
+  width: 10%;
+  background-color: green;
+  position: absolute;
+  z-index:100;
+}
+
+.next {
+  right: 0;
+}
+
+.previous {
+  left: 0;
+}
+
+.arrow-text {
+  margin: auto;
+}
+
 /* Poem Container */
 #poem {
   position: relative;

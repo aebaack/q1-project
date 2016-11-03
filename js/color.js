@@ -23,7 +23,7 @@ $(document).ready(function() {
   var analyzeText = stanzaData[1]; // String of stanzas formatted for tone analysis
 
   // Poem tone analysis
-  var tones = $.getJSON("https://g-watson-aidanbaack.herokuapp.com/?text=" + analyzeText);
+  // var tones = $.getJSON("https://g-watson-aidanbaack.herokuapp.com/?text=" + analyzeText);
   // var analyzeText = "This is a sentence.";
   // var tones = $.post("https://g-watson-aidanbaack.herokuapp.com/", {"text": analyzeText});
 
