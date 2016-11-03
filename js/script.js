@@ -20,9 +20,8 @@ $(poemSearchForm).on("input", function() {
 // Poem has been searched for
 $(poemSearchSubmit).on("click", function() {
   // Search variables
-  var poet = poemSearchForm["poet"].value; // Name of the poet
-  var title = poemSearchForm["title"].value; // Title of the poem
-  var length = poemSearchForm["length"].value; // Length of the poem
+  var poet = poemSearchForm.poet.value; // Name of the poet
+  var title = poemSearchForm.title.value; // Title of the poem
 
   var ul = $("#poemList"); // Collapsible list holder
   $(ul).children().remove(); // Remove past searches from displaying upon a new search
@@ -135,7 +134,7 @@ $(customTextSubmit).on("click", function() {
       lines.push(currentLine); // Add currentLine to lines
       currentLine = ""; // Reset currentLine
     } else {
-      currentLine += text[i]
+      currentLine += text[i];
     }
   }
   lines.push(currentLine); // Add the last line
@@ -152,7 +151,7 @@ $(".random").on("click", function() {
     var poemTitle = titleList.titles[Math.floor(Math.random() * titleList.titles.length)];
     var poem = $.getJSON("http://poetdb.herokuapp.com/title/"+poemTitle+":abs");
     poem.done(function(data) {
-      sessionStorage.setItem("poem", JSON.stringify(data));
+      sessionStorage.setItem("poem", JSON.stringify(data[0]));
       document.location.href = "color.html";
     });
   });
@@ -161,7 +160,6 @@ $(".random").on("click", function() {
 
 // ----- SEND POEM TO COLOR.HTML ---- //
 function sendPoemToColor(poemObj) {
-  console.log(poemObj);
   // Receives poem object, puts it in sessionStorage, and goes to color.html
   sessionStorage.setItem("poem", JSON.stringify(poemObj)); // Puts poem in sessionStorage
   document.location.href = "color.html"; // Goes to color.html
