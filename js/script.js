@@ -144,8 +144,9 @@ $(customTextSubmit).on("click", function() {
 
 
 // ----- RANDOM ----- //
-$(".random").on("click", function() {
+$(".random").on("click", function(event) {
   // Random Poem
+  $(event.target).text("Loading...");
   var titles = $.getJSON("http://poetdb.herokuapp.com/title");
   titles.done(function(titleList) {
     var poemTitle = titleList.titles[Math.floor(Math.random() * titleList.titles.length)];
