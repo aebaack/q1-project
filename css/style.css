@@ -3,25 +3,31 @@ body {
   font-family: "Libre Franklin";
 }
 
+/* Logo Font */
 .brand-logo {
   font-family: "Rubik";
 }
+
+/* ----- BASIC STYLING ----- */
 
 /* No uppercase styling for buttons */
 .no-uppercase {
   text-transform: none;
 }
 
+/* Rounded corners for buttons */
 .rounded-corners {
   -webkit-border-radius: 50px;
   -moz-border-radius: 50px;
   border-radius: 50px;
 }
 
+/* Padding and margins */
 .bottom-padding {
   padding-bottom: 40px;
 }
 
+/* Remove spacing underneath first row */
 #no-top-margin {
   margin-top: 0;
 }
@@ -30,6 +36,8 @@ body {
   margin-bottom: 0;
   padding-bottom: 0;
 }
+
+/* ----- EMOTION CARDS ----- */
 
 /* Keep the height of the emotion cards on the front page the same */
 .emotion-card {
@@ -46,8 +54,4 @@ body {
   .emotion-card {
     height: 175px;
   }
-}
-
-.clearfix {
-  overflow: auto;
 }
