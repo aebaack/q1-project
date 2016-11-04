@@ -24,6 +24,18 @@ $(document).ready(function() {
     $(".previous").on("click", function() {
       previousStanza();
     });
+
+    // Add keyboard controls
+    $(window).keydown(function(event) {
+      switch (event.which) {
+        case 37: // Left Arrow: Go one stanza back (if possible)
+          previousStanza();
+          break;
+        case 39: // Right Arrow: Go one stanza forward (if possible)
+          nextStanza();
+          break;
+      }
+    });
   });
 
   // Stanza Display and Analysis Data
@@ -58,17 +70,6 @@ $(document).ready(function() {
   tones.fail(function (err) {
     loader.hide();
     $("#error").removeClass("hide");
-  });
-
-  $(window).keydown(function(event) { // Keyboard controls
-    switch (event.which) {
-      case 37: // Left Arrow: Go one stanza back (if possible)
-        previousStanza();
-        break;
-      case 39: // Right Arrow: Go one stanza forward (if possible)
-        nextStanza();
-        break;
-    }
   });
 
   function previousStanza() {
