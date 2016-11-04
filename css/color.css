@@ -31,7 +31,7 @@ canvas {
   -ms-transform: translate(-50%, -50%);
   -o-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
-  z-index: 100;
+  z-index: 105;
 }
 
 /* Begin Button */

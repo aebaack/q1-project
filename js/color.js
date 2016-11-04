@@ -55,6 +55,11 @@ $(document).ready(function() {
     changeBackground(strongestDocTone, strongestDocTone); // Change background color to entire poem tone
   });
 
+  tones.fail(function (err) {
+    loader.hide();
+    $("#error").removeClass("hide");
+  });
+
   $(window).keydown(function(event) { // Keyboard controls
     switch (event.which) {
       case 37: // Left Arrow: Go one stanza back (if possible)
