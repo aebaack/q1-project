@@ -2,7 +2,7 @@
 
 // ----- SEARCH ----- //
 // Poem search form
-var poemSearchForm = document.forms["poems"];
+var poemSearchForm = document.forms.poems;
 
 // Poem search submit button
 var poemSearchSubmit = $("#searchPoems");

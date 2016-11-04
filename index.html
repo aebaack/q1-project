@@ -39,7 +39,7 @@
         <ul class="side-nav" id="nav-mobile">
           <li><a href="#searchModal" class="search">Search</a></li>
           <li><a href="#customModal" class="custom">Custom</a></li>
-          <li><a href="#">Random</a></li>
+          <li><a class="random">Random</a></li>
         </ul>
       </div> <!-- end container -->
     </nav> <!-- end navigation -->
@@ -103,7 +103,7 @@
       <div class="section">
         <h4 class="grey-text text-lighten-3">Analyze a Random Poem</h4>
         <p class="grey-text text-darken-4">Poets include Shakespeare, John Donne, Emily Dickinson...</p>
-        <a class="waves-effect waves-light btn-large rounded-corners red lighten-1"><i class="material-icons left">shuffle</i> Random Poem</a>
+        <a class="waves-effect waves-light btn-large rounded-corners red lighten-1 random"><i class="material-icons left">shuffle</i> Random Poem</a>
       </div> <!-- end section -->
       <div class="section">
         <h4 class="grey-text text-lighten-3">Search for a Specific Poem</h4>
@@ -125,10 +125,10 @@
           <p class="grey-text text-lighten-4">Poetry in Color</p>
         </div> <!-- end column -->
         <div class="col m4 offset-m2 s12">
-          <ul>
+          <ul> <!-- Navigation Links -->
             <li><a class="grey-text text-lighten-3 search" href="#searchModal">Search</a></li>
             <li><a class="grey-text text-lighten-3 custom" href="#customModal">Custom</a></li>
-            <li><a class="grey-text text-lighten-3" href="#!">Random</a></li>
+            <li><a class="grey-text text-lighten-3 random" href="#!">Random</a></li>
           </ul>
         </div> <!-- end column -->
       </div> <!-- end row -->
@@ -140,7 +140,8 @@
     </div> <!-- end copyright -->
   </footer>
 
-  <!-- modal -->
+  <!-- MODALS -->
+  <!-- poem search modal -->
   <div id="searchModal" class="modal">
     <form action="" name="poems" method="post">
       <div class="modal-content blue-grey lighten-5">
@@ -166,6 +167,7 @@
     </form>
   </div> <!-- end modal -->
 
+  <!-- poem selection modal -->
   <div id="poemModal" class="modal modal-fixed-footer">
     <div class="modal-content center blue-grey lighten-5">
       <h3 id="loadingPoems">Loading Poems<br></h3>
@@ -183,27 +185,27 @@
         </div>
       </div>
       <!-- end loading circle -->
-      <ul class="collapsible popout hide" id="poemList" data-collapsible="accordion">
-      </ul>
+      <ul class="collapsible popout hide" id="poemList" data-collapsible="accordion"></ul>
     </div> <!-- end modal content -->
     <div class="modal-footer">
       <a href="#!" class="modal-action modal-close waves-effect waves-light btn-flat">Close</a>
     </div> <!-- end modal footer -->
   </div> <!-- end modal -->
 
+  <!-- custom text modal -->
   <div id="customModal" class="modal modal-fixed-footer">
     <div class="modal-content blue-grey lighten-5">
       <h3>Enter custom text</h3>
       <br>
-      <div class="input-field col s12">
+      <div class="input-field col s12"> <!-- custom text input -->
         <textarea id="customText" class="materialize-textarea" length="2000" placeholder="Enter custom text less than 1000 characters.
 Stanzas should be separated by blank lines." wrap="hard"></textarea>
         <label for="customText">Custom Text</label>
       </div>
-    </div>
+    </div> <!-- end modal content -->
     <div class="modal-footer">
       <button disabled class="btn red lighten-2 btn-flat" id="customTextSubmit">Search</button>
-    </div>
-  </div>
+    </div> <!-- end modal footer -->
+  </div> <!-- end modal -->
 </body>
 </html>

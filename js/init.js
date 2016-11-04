@@ -1,11 +1,14 @@
 $(document).ready(function (){
   $(".button-collapse").sideNav();
-  $("select").material_select();
+  // Poem Search Modal
   $(".search").leanModal();
+  // Poem Selection Modal
   $(".poems").leanModal({
     dismissible: false
   });
+  // Custom Text Entry Modal
   $(".custom").leanModal();
+  // Autocomplete Author Names
   $('input.autocomplete').autocomplete({
     data: {
       "Adam Lindsay Gordon": null,
