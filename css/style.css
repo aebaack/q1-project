@@ -1,5 +1,10 @@
 body {
   background: linear-gradient(20deg, rgba(128,222,234,1) 0%, rgba(40,53,147,1) 100%) fixed;
+  font-family: "Libre Franklin";
+}
+
+.brand-logo {
+  font-family: "Rubik";
 }
 
 /* No uppercase styling for buttons */
